@@ -1,0 +1,47 @@
+[project]
+name = "oapi2mcp"
+version = "0.1.1"
+description = "Convert OpenAPI specs into MCP (Model Context Protocol) servers"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Troy Liu", email = "troyliu0105@outlook.com" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = [
+    "mcp>=1.27.0",
+    "httpx",
+]
+
+[project.scripts]
+oapi2mcp = "openapi2mcp.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/troyliu0105/oapi2mcp"
+Repository = "https://github.com/troyliu0105/oapi2mcp"
+Issues = "https://github.com/troyliu0105/oapi2mcp/issues"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/openapi2mcp"]
