@@ -67,7 +67,8 @@ def create_server(operations: list[Operation], base_url: str) -> Server:
         url = f"{base_url.rstrip('/')}{url_path}"
 
         try:
-            async with httpx.AsyncClient() as client:
+            timeout = httpx.Timeout(connect=10.0, read=300.0, write=60.0, pool=10.0)
+            async with httpx.AsyncClient(timeout=timeout) as client:
                 method = operation.method.upper()
                 if method == "GET":
                     response = await client.request(
